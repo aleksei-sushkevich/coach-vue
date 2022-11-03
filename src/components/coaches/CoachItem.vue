@@ -49,7 +49,7 @@ export default {
     coachDetailsLink() {
       return this.$route.path + '/' + this.id;
     }
-  }
+  },
 }
 </script>
 
