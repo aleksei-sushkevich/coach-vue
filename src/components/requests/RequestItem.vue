@@ -9,17 +9,7 @@
 
 <script>
 export default {
-  name: "RequestItem",
-  props: {
-    email : {
-      type: String,
-      required: true
-    },
-    message : {
-      type: String,
-      required: true
-    }
-  },
+  props: ['email', 'message'],
   computed: {
     emailLink() {
       return 'mailto:' + this.email;

@@ -1,29 +1,28 @@
 <template>
   <base-card>
     <h2>Find Your Coach</h2>
-    <span class="filter-option">
-      <input type="checkbox" id="fronted" checked @change="setFilter"/>
-      <label for="fronted">Frontend</label>
+    <span className="filter-option">
+      <input type="checkbox" id="frontend" checked @change="setFilter"/>
+      <label htmlFor="frontend">Frontend</label>
     </span>
-    <span class="filter-option">
+    <span className="filter-option">
       <input type="checkbox" id="backend" checked @change="setFilter"/>
-      <label for="backend">Backend</label>
+      <label htmlFor="backend">Backend</label>
     </span>
-    <span class="filter-option">
+    <span className="filter-option">
       <input type="checkbox" id="career" checked @change="setFilter"/>
-      <label for="career">Career</label>
+      <label htmlFor="career">Career</label>
     </span>
   </base-card>
 </template>
 
 <script>
 export default {
-  name: "CoachFilter",
   emits: ['change-filter'],
   data() {
     return {
       filters: {
-        fronted: true,
+        frontend: true,
         backend: true,
         career: true
       }
@@ -35,7 +34,7 @@ export default {
       const isActive = event.target.checked;
       const updatedFilters = {
         ...this.filters,
-        [inputId] : isActive
+        [inputId]: isActive
       };
       this.filters = updatedFilters;
       this.$emit('change-filter', updatedFilters);
@@ -61,6 +60,7 @@ h2 {
 .filter-option label {
   margin-left: 0.25rem;
 }
+
 .filter-option.active label {
   font-weight: bold;
 }

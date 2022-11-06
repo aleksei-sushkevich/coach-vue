@@ -9,8 +9,12 @@
 
 <script>
 export default {
-  name: "BaseButton",
   props: {
+    mode: {
+      type: String,
+      required: false,
+      default: null
+    },
     link: {
       type: Boolean,
       required: false,
@@ -20,30 +24,24 @@ export default {
       type: String,
       required: false,
       default: '/'
-    },
-    mode: {
-      type: String,
-      required: false,
-      default: null
-    },
+    }
   }
 }
 </script>
 
 <style scoped>
-
 button,
 a {
   text-decoration: none;
   padding: 0.75rem 1.5rem;
-  display: inline-block;
-  margin-right: 0.5rem;
-  border-radius: 30px;
-  cursor: pointer;
-  color: white;
-  border: 1px solid #3a0061;
-  background-color: #3a0061;
   font: inherit;
+  background-color: #3a0061;
+  border: 1px solid #3a0061;
+  color: white;
+  cursor: pointer;
+  border-radius: 30px;
+  margin-right: 0.5rem;
+  display: inline-block;
 }
 
 a:hover,

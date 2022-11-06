@@ -6,17 +6,7 @@
 
 <script>
 export default {
-  name: "BaseBadge",
-  props: {
-    type: {
-      type: String,
-      required: false
-    },
-    title: {
-      type: String,
-      required: false
-    }
-  },
+  props: ['type', 'title'],
   computed: {
     text() {
       return this.title.toUpperCase();
@@ -34,17 +24,19 @@ export default {
   display: inline-block;
   margin-right: 0.5rem;
 }
-.career {
-  background-color: #8d006e;
-  color: white;
-}
-.backend {
-  background-color: #71008d;
-  color: white;
-}
+
 .frontend {
   background-color: #3d008d;
   color: white;
 }
 
+.backend {
+  background-color: #71008d;
+  color: white;
+}
+
+.career {
+  background-color: #8d006e;
+  color: white;
+}
 </style>

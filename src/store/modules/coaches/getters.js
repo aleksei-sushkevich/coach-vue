@@ -12,10 +12,10 @@ export default {
     },
     shouldUpdate(state) {
         const lastFetch = state.lastFetch;
-        if (lastFetch) {
-            const currentTimeStamp = new Date().getTime();
-            return (currentTimeStamp - lastFetch) / 1000 > 60;
+        if (!lastFetch) {
+            return true;
         }
-        return true;
+        const currentTimeStamp = new Date().getTime();
+        return (currentTimeStamp - lastFetch) / 1000 > 60;
     }
 };

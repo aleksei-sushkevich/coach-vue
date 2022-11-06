@@ -26,19 +26,15 @@
 
 <script>
 export default {
-  name: "CoachDetail",
   props: ['id'],
   data() {
     return {
-      selectedCoach: null
+      selectedCoach: null,
     };
   },
   computed: {
     fullName() {
       return this.selectedCoach.firstName + ' ' + this.selectedCoach.lastName;
-    },
-    contactLink() {
-      return this.$route.path + '/' + this.id + '/contact';
     },
     areas() {
       return this.selectedCoach.areas;
@@ -48,15 +44,15 @@ export default {
     },
     description() {
       return this.selectedCoach.description;
-    }
+    },
+    contactLink() {
+      return this.$route.path + '/' + this.id + '/contact';
+    },
   },
   created() {
-    this.selectedCoach = this.$store.getters['coaches/coaches'].find(coach => coach.id === this.id);
-
-  }
-}
+    this.selectedCoach = this.$store.getters['coaches/coaches'].find(
+        (coach) => coach.id === this.id
+    );
+  },
+};
 </script>
-
-<style scoped>
-
-</style>

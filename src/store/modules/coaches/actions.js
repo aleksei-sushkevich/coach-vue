@@ -9,15 +9,20 @@ export default {
             areas: data.areas
         };
 
-        const response = await fetch(`https://bigg-app-9b256-default-rtdb.firebaseio.com/coaches/${userId}.json`,{
-            method: 'PUT',
-            body: JSON.stringify(coachData)
-        });
+        const token = context.rootGetters.token;
+
+        const response = await fetch(
+            `https://bigg-app-9b256-default-rtdb.firebaseio.com/coaches/${userId}.json?auth=${token}`,
+            {
+                method: 'PUT',
+                body: JSON.stringify(coachData)
+            }
+        );
 
         // const responseData = await response.json();
 
-        if(!response.ok) {
-            //error...
+        if (!response.ok) {
+            // error ...
         }
 
         context.commit('registerCoach', {
@@ -30,11 +35,14 @@ export default {
             return;
         }
 
-        const response = await fetch(`https://bigg-app-9b256-default-rtdb.firebaseio.com/coaches.json`);
+        const response = await fetch(
+            `https://bigg-app-9b256-default-rtdb.firebaseio.com/coaches.json`
+        );
         const responseData = await response.json();
 
-        if(!response.ok){
-            throw new Error(responseData.message || 'Failed to fetch!');
+        if (!response.ok) {
+            const error = new Error(responseData.message || 'Failed to fetch!');
+            throw error;
         }
 
         const coaches = [];
@@ -47,7 +55,7 @@ export default {
                 description: responseData[key].description,
                 hourlyRate: responseData[key].hourlyRate,
                 areas: responseData[key].areas
-            }
+            };
             coaches.push(coach);
         }
 
